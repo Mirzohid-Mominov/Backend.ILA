@@ -1,15 +1,13 @@
-namespace Caching.SimpleInfra.Api
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
-            var app = builder.Build();
 
-            app.MapGet("/", () => "Hello World!");
+using Caching.SimpleInfra.Api.Configurations;
 
-            app.Run();
-        }
-    }
-}
+var builder = WebApplication.CreateBuilder(args);
+
+await builder.ConfigureAsync();
+
+
+var app = builder.Build();
+
+await app.ConfigureAsync();
+
+await app.RunAsync();
